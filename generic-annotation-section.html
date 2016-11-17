@@ -10,7 +10,7 @@
 <!--
 `generic-annotation-section`
 Annotation section used in function, medical, and expression views.
-@demo demo/index.html 
+@demo demo/index.html
 -->
 <dom-module id="generic-annotation-section">
   <template>
@@ -153,7 +153,8 @@ Annotation section used in function, medical, and expression views.
       is: 'generic-annotation-section',
       properties: {
         categories: {
-          type: Array
+          type: Array,
+          value : []
         },
         categoryTitles: {
           type: Object,
@@ -256,7 +257,7 @@ Annotation section used in function, medical, and expression views.
         });
         Object.keys(data).forEach(function(d){self.count+=data[d].length;});
         this.data = data;
-        }, 1);
+      }, 2000); //TODO fix this with promise or something.
       },
       _toggleAllEvidences: function(){
         this.async(function() {
