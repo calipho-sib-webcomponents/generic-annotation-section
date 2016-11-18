@@ -165,7 +165,6 @@ Annotation section used in function, medical, and expression views.
         },
         goldOnly: {
           type: Boolean,
-          value: false,
           observer: "getAnnotationsByView"
         },
         showEvidences: {
@@ -198,7 +197,6 @@ Annotation section used in function, medical, and expression views.
                 });
       },
       getAnnotationsByView: function(){
-        this.async(function(){
         var data_xrefs = [];
         var data_publi = [];
         var data_annot = [];
@@ -233,7 +231,7 @@ Annotation section used in function, medical, and expression views.
             if(obj.negativeEvidence==true && !a.description.startsWith("<b>Not </b>")) a.description = "<b>Not </b>"+a.description
           });
           if(a.annotationId===0) a.annotationId=data_annot.indexOf(a);
-          if(a.qualityQualifier==="GOLD" || self.goldOnly===false){
+          if(a.qualityQualifier==="GOLD" || self.goldOnly!==true){
             data[a.category].push({
               id: a.annotationId,
               description: a.description || a.cvTermName,
@@ -257,7 +255,6 @@ Annotation section used in function, medical, and expression views.
         });
         Object.keys(data).forEach(function(d){self.count+=data[d].length;});
         this.data = data;
-      }, 2000); //TODO fix this with promise or something.
       },
       _toggleAllEvidences: function(){
         this.async(function() {
