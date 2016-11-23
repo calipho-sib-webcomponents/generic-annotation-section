@@ -151,6 +151,10 @@ Annotation section used in function, medical, and expression views.
     Polymer({
       is: 'generic-annotation-section',
       properties: {
+        nxConfig: {
+          type: Object,
+          value: {}
+        },
         categories: {
           type: Array,
           value : []
@@ -179,8 +183,8 @@ Annotation section used in function, medical, and expression views.
         if(this.evidencesShown===undefined) this._toggleAllEvidences();
         var nx = new Nextprot.Client("neXtprot annotation loader", "Calipho Group");
         var apiCall = [];
-        this.nxEntry = nx.getEntryName();
-        this.categories.forEach(function(a){apiCall.push(nx.getAnnotationsByCategory(this.nxEntry, a))});
+        var self = this;
+        this.categories.forEach(function(a){apiCall.push(nx.getAnnotationsByCategory(self.nxConfig.entry, a))});
         var self = this;
         Promise.all(apiCall)
                 .then(function (categories) {
