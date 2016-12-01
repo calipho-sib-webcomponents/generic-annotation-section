@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic generic-annotation-section demo</h3>
+      <h3>generic-annotation-section with function annotations</h3>
       <h4><span><label>Gold only</label><input type="checkbox" onchange="toggleGoldOnly()" style="margin-left: 20px;"></span></h4>
       <demo-snippet>
         <template>
@@ -37,14 +37,28 @@
           ]'></generic-annotation-section>
         </template>
       </demo-snippet>
+      <h3>generic-annotation-section with interaction annotations</h3>
+      <demo-snippet>
+        <template>
+          <generic-annotation-section
+                  section="interactions"
+                  categories='["INTERACTION-INFO", "ENZYME-REGULATION", "COFACTOR", "BINARY-INTERACTION"]'
+                  category-titles='{"subunit": "overview", "BinaryInteraction": "Binary Interactions"}'>
+          </generic-annotation-section>
+        </template>
+      </demo-snippet>
     </div>
     <script>
       function toggleGoldOnly(){
-        var element = document.querySelector("generic-annotation-section");
-        if(element.hasAttribute("gold-only")){
-          element.removeAttribute("gold-only");
-        } else{
-          element.setAttribute("gold-only","true");
+        var elements = document.querySelectorAll("generic-annotation-section");
+        for (var e in elements){
+          var element = elements[e];
+          if(!element.goldOnly){
+            element.goldOnly = true;
+          } else{
+            element.goldOnly = false;
+          }
+
         }
       }
     </script>
