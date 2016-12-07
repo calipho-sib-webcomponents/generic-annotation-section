@@ -1,7 +1,9 @@
 {
   "name": "generic-annotation-section",
   "description": "Annotation section used in function, medical, and expression views.",
-  "authors": ["marcin.domagalski@sib.swiss"],
+  "authors": [
+    "marcin.domagalski@sib.swiss"
+  ],
   "keywords": [
     "web-components",
     "nextprot-webcomponents",
@@ -16,6 +18,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "iron-collapse": "PolymerElements/iron-collapse#^1.2.1",
+    "iron-icon": "^1.0.12",
     "paper-spinner": "PolymerElements/paper-spinner#^1.2.1",
     "evidence-item": "git://github.com/calipho-sib-webcomponents/evidence-item.git#develop",
     "quality-label": "git://github.com/calipho-sib-webcomponents/quality-label.git#develop",
